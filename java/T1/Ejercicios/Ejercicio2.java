@@ -1,5 +1,3 @@
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
 public class Ejercicio2 {
     public static void main(String[] args) {
         
