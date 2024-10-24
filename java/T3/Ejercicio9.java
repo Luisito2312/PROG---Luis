@@ -1,4 +1,4 @@
-package T3;
+package java.T3;
 
 public class Ejercicio9 {
     public static void main(String[] args) {
