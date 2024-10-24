@@ -1,4 +1,4 @@
-package java.T3;
+package Tema3;
 
 public class Ejercicio11 {
     public static void main(String[] args) {
