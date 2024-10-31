@@ -11,13 +11,21 @@ public class Ejercicio1 {
         System.out.print("? ");
         num = Integer.parseInt(System.console().readLine());
 
-        while (num >= 0) {
+        // while (num >= 0) {
+        //     cont++;
+        //     num2 = num2 + num;
+
+        //     System.out.print("? ");
+        //     num = Integer.parseInt(System.console().readLine());
+        // }
+
+        do {
             cont++;
             num2 = num2 + num;
 
             System.out.print("? ");
             num = Integer.parseInt(System.console().readLine());
-        }
+        } while (num >= 0);
 
         System.out.println("Hay en total " + cont + " numeros, que suman: " + num2);
     }
