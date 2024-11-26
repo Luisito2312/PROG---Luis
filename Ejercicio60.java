@@ -16,6 +16,6 @@ public class Ejercicio60 {
         aux = Funciones.invertir(num);
         
 
-        System.out.println("Dislocando el %d obtenemos el %d", num, dislocado);
+        System.out.printf("Dislocando el %d obtenemos el %d", num);
     }
 }
