@@ -5,7 +5,6 @@
  * curso 2024|25
  */
 
-package tema05.Librerias;
 
 public class Funciones {
     
