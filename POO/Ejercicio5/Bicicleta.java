@@ -8,6 +8,6 @@ public class Bicicleta extends Vehiculo {
     //Metodos
     public static void recorrerKilometrosBici(int cantidadKilometros) {
 
-        this.kilometrosRecorridos
+        
     }
 }
