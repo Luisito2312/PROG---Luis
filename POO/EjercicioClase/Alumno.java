@@ -40,9 +40,12 @@ public class Alumno extends Persona {
         this.unidad = unidad;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Nombre: " + getNombre() + ", DNI: " + getDni() + ", edad: " + getEdad() + ", Ciclo" + ciclo
+                + ",  Curso" + curso + ",  unidad" + unidad + ".";
+    }   
     
-
+    
     
 }

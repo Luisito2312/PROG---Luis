@@ -3,7 +3,7 @@ package EjercicioClase;
 public interface Tarea {
     
     //Metodos
-    public static void añadir() {
+    public static void añadir(Alumno alumno) {
 
     }
 
@@ -11,11 +11,11 @@ public interface Tarea {
 
     }
 
-    public static void editar() {
+    public static void editar(Alumno alumno) {
 
     }
 
-    public static void borrar() {
+    public static void borrar(Alumno alumno) {
         
     }
 }
