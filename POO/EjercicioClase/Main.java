@@ -45,7 +45,16 @@ public class Main {
                     Agenda.listar(listado);
                     break;
                 case 3:
-
+                    System.out.println("Introduce el dni del alumno a editar");
+                    String dni1 = System.console().readLine();
+                    for (int i = 0; i < listado.length; i++) {
+                        if (dni1.equals(listado[i].getDni())) {
+                            Agenda.editar(listado[i], dni1, listado);
+                        } else {
+                            System.out.println("No existe ningun alumno con ese dni.");
+                        }
+                    }
+                    
                     break;
 
                 case 4: 
