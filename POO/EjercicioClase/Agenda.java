@@ -43,7 +43,6 @@ public class Agenda implements Tarea {
                 System.out.println("6. Unidad");
 
                 int opcion = scanner.nextInt();
-                scanner.nextLine(); // Limpiar buffer
 
                 switch (opcion) {
                     case 1:
@@ -78,7 +77,7 @@ public class Agenda implements Tarea {
             }
         }
         System.out.println("Alumno con DNI " + dniAlumno + " no encontrado");
-    }
+    } 
 
     public static void listar(Alumno[] listado) {
         for (int i = 0; i < listado.length; i++) {
