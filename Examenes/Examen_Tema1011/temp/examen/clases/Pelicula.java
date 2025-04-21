@@ -53,7 +53,6 @@ public class Pelicula {
         return estreno;
     }
 
-
     public boolean getVista() {
         return vista;
     }
