@@ -50,7 +50,8 @@
                 %>
                 </table><br>
                 <form action="ejemplo.jsp">
-                    <input type="submit" value="Siguiente pagina">
+                    <input 
+                    type="submit" value="Siguiente pagina">
                 </form>
                 
         
