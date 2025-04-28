@@ -23,6 +23,7 @@
             int altura = Integer.parseInt(request.getParameter("altura"));
             String color = request.getParameter("color");
             char caracter = ' ';
+            
 
             if (!(request.getParameter("caracter").equals("null"))) {
                 caracter = request.getParameter("caracter").charAt(0);
