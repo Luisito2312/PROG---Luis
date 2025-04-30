@@ -140,10 +140,22 @@
 
             // Crear cabecera para el nuevo personaje
             const th = document.createElement("th");
-            th.id = `personaje_${personajeCounter}`; 
-            th.innerHTML = `
-                <img id="img_personaje_${personajeCounter}" src="${url}" class="personaje"><br>
-                <span id="nombre_personaje_${personajeCounter}">${nombre}</span><br><br>
+            th.id = `personaje_${personajeCounter}`;
+           th.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img id="img_personaje_${personajeCounter}" src="${url}" class="personaje">
+                    <div style="text-align: left;">
+                        <strong id="nombre_personaje_${personajeCounter}">${nombre}</strong><br><br>
+                        Vida: <progress id="vida_${personajeCounter}" value="100" max="100" style="width: 120px;"></progress>
+                        <button onclick="cambiarVida(${personajeCounter}, 10)">+</button>
+                        <button onclick="cambiarVida(${personajeCounter}, -10)">–</button><br>
+
+                        Degeneración: <progress id="degen_${personajeCounter}" value="0" max="100" style="width: 120px;"></progress>
+                        <button onclick="cambiarDegeneracion(${personajeCounter}, 10)">+</button>
+                        <button onclick="cambiarDegeneracion(${personajeCounter}, -10)">–</button>
+                    </div>
+                </div>
+                <br>
                 <div class="button-container">
                     <button onclick="editarPersonaje(${personajeCounter})">Editar Personaje</button>
                     <button onclick="agregarNpc('${personajeCounter}')">Agregar NPC</button>
@@ -178,9 +190,20 @@
             if (nombre != null) {
                 document.getElementById(`nombre_personaje_${id}`).innerText = nombre;
             }
+
             const url = prompt("Nueva URL de la imagen:");
             if (url != null) {
                 document.getElementById(`img_personaje_${id}`).src = url;
+            }
+
+            const vida = prompt("Nueva vida (0-100):");
+            if (vida !== null && !isNaN(vida)) {
+                document.getElementById(`vida_${id}`).value = Math.max(0, Math.min(100, parseInt(vida)));
+            }
+
+            const degen = prompt("Nueva degeneración (0-100):");
+            if (degen !== null && !isNaN(degen)) {
+                document.getElementById(`degen_${id}`).value = Math.max(0, Math.min(100, parseInt(degen)));
             }
         }
 
@@ -249,6 +272,20 @@
         function eliminarNpc(divId) {
             const div = document.getElementById(divId);
             div.remove();
+        }
+
+        function cambiarVida(id, delta) {
+            const barra = document.getElementById(`vida_${id}`);
+            let nuevaVida = parseInt(barra.value) + delta;
+            nuevaVida = Math.max(0, Math.min(100, nuevaVida));
+            barra.value = nuevaVida;
+        }
+
+        function cambiarDegeneracion(id, delta) {
+            const barra = document.getElementById(`degen_${id}`);
+            let nuevaDeg = parseInt(barra.value) + delta;
+            nuevaDeg = Math.max(0, Math.min(100, nuevaDeg));
+            barra.value = nuevaDeg;
         }
     </script>
 </head>
