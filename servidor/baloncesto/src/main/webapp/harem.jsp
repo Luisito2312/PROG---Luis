@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta charset="UTF-8">
-    <title>Harem DnD - Editable</title>
+    <title>Partida ROL</title>
     <style>
         table {
             width: 100%;
