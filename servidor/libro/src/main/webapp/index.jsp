@@ -1,62 +1,49 @@
-<%@ page import="java.util.*, java.sql.*" %>
+
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="java.sql.*" %>
 <html>
 <head>
     <title>Gestión de Libros</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
-    <style>
-        .btn-editar { background-color: #007bff; color: white; }
-        .btn-borrar { background-color: #dc3545; color: white; }
-    </style>
+    
 </head>
 <body class="p-4">
-    <div class="container">
-        <h2>Gestión de Libros</h2>
-        <button class="btn btn-primary mb-3">Añadir Libro</button>
+    <h2>Gestion de libros</h2>
+    
 
-        <%
-            // Conexión a la base de datos
-            Connection conn = null;
-            Statement stmt = null;
-            ResultSet rs = null;
-
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/libreria", "usuario", "password");
-                stmt = conn.createStatement();
-                rs = stmt.executeQuery("SELECT titulo, autor FROM libro");
-        %>
-
-        <div class="row">
-            <div class="col-md-4 font-weight-bold">Título</div>
-            <div class="col-md-4 font-weight-bold">Autor</div>
-            <div class="col-md-4 font-weight-bold">Acciones</div>
-        </div>
-
-        <%
-                while (rs.next()) {
-                    String titulo = rs.getString("titulo");
-                    String autor = rs.getString("autor");
-        %>
-        <div class="row mb-2">
-            <div class="col-md-4"><%= titulo %></div>
-            <div class="col-md-4"><%= autor %></div>
-            <div class="col-md-4">
-                <button class="btn btn-editar btn-sm">Editar</button>
-                <button class="btn btn-borrar btn-sm">Borrar</button>
-            </div>
-        </div>
-        <%
-                }
-            } catch (Exception e) {
-                out.println("<p>Error al obtener los libros: " + e.getMessage() + "</p>");
-            } finally {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            }
-        %>
+    <div class="d-flex flex-row">
+        <a class="btn btn-warning" href="nuevo.jsp">Añadir libro</a>
     </div>
+
+    
+
+    <%
+        try{
+
+            //COnectar a la base de datos
+            String url = "jdbc:mysql://localhost:3306/libreria";
+            Connection con = DriverManager.getConnection(url, "root" , "password");
+
+            //Creamos la consulta
+            Statement stmn = con.createStatement();
+            ResultSet resultado = stmn.executeQuery("SELECT titulo, autor FROM libro");
+
+            while(resultado.next()) {
+            %>
+                <div class="row mb-2">
+                    <div class="col-3"><%= resultado.getString("titulo")%></div>
+                    <div class="col-2"><%= resultado.getString("autor")%></div>
+                    <div class="col-3"><button class="btn btn-info">Editar libro</button><button class="btn btn-warning">Eliminar libro</button><br><br></div>
+                </div>
+            <%
+            }
+            con.close();
+
+        } catch(SQLException sqle) {
+            out.print(sqle.getMessage());
+        }
+    %>
+
+
 </body>
 </html>
