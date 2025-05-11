@@ -1,0 +1,5 @@
+casa house
+piso flat
+joven young
+perro dog
+gato cat
