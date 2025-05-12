@@ -26,14 +26,22 @@
 
             //Creamos la consulta
             Statement stmn = con.createStatement();
-            ResultSet resultado = stmn.executeQuery("SELECT titulo, autor FROM libro");
+            ResultSet resultado = stmn.executeQuery("SELECT codlib, titulo, autor FROM libro");
 
             while(resultado.next()) {
             %>
                 <div class="row mb-2">
                     <div class="col-3"><%= resultado.getString("titulo")%></div>
                     <div class="col-2"><%= resultado.getString("autor")%></div>
-                    <div class="col-3"><button class="btn btn-info">Editar libro</button><button class="btn btn-warning">Eliminar libro</button><br><br></div>
+                    <div class="col-3">
+                        <a href="editar.jsp?codlib=<%= resultado.getInt("codlib") %>">
+                            <button class="btn btn-info" >Editar libro</button>
+                        </a>
+                        <a href="eliminar.jsp?codlib=<%= resultado.getInt("codlib") %>">
+                            <button class="btn btn-danger">Eliminar libro</button><br><br>
+                        </a>
+                        
+                    </div>
                 </div>
             <%
             }

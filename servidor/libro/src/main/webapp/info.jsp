@@ -15,10 +15,8 @@
         String isbn = request.getParameter("isbn");
         String titulo = request.getParameter("titulo");
         String autor = request.getParameter("autor");
-        String paginas = request.getParameter("paginas");
+        String paginas = request.getParameter("numPag");
         String argumento = request.getParameter("argumento");
-
-
 
         try {
 
@@ -26,13 +24,31 @@
             Connection con = DriverManager.getConnection(url, "root", "password");
 
             // insertamos la información
-            String sql = "INSERT INTO libro(isbn, titulo, autor, paginas, argumento) VALUES (?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO libro(isbn, titulo, autor, paginas) VALUES (?, ?, ?, ?);";
+            
+            try {
+                    PreparedStatement pstmt = con.prepareStatement(sql);
+                    pstmt.setString(1, isbn);
+                    pstmt.setString(2, titulo);
+                    pstmt.setString(3, autor);
+                    pstmt.setString(4, paginas);
+                    
+
+                    int rows = pstmt.executeUpdate();
+                    if(rows > 0) {
+                        out.print("<p>Libro añadido correctamente</p>");
+                    }
+                } catch(Exception e) {
+                    out.print(e.getMessage());
+                }
 
 
         } catch(SQLException sqle) {
             out.print(sqle.getMessage());
         }
         %>
-
+        <a href="index.jsp">
+            <button class="btn btn-info" >Inicio</button>
+        </a>
     </body>
 </html>
