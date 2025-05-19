@@ -40,7 +40,9 @@
                         <a href="eliminar.jsp?codlib=<%= resultado.getInt("codlib") %>">
                             <button class="btn btn-danger">Eliminar libro</button><br><br>
                         </a>
-                        
+                        <a href="prestar.jsp?codlib=<%= resultado.getInt("codlib") %>">
+                            <button class="btn btn-warning" >Prestar libro</button>
+                        </a>
                     </div>
                 </div>
             <%
