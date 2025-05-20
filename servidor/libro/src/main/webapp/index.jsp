@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*" %>
 <html>
@@ -30,18 +29,21 @@
 
             while(resultado.next()) {
             %>
-                <div class="row mb-2">
-                    <div class="col-3"><%= resultado.getString("titulo")%></div>
+                <div class="row mb-3">
+                    <div class="col-2"><%= resultado.getString("titulo")%></div>
                     <div class="col-2"><%= resultado.getString("autor")%></div>
-                    <div class="col-3">
+                    <div class="col-5">
                         <a href="editar.jsp?codlib=<%= resultado.getInt("codlib") %>">
                             <button class="btn btn-info" >Editar libro</button>
                         </a>
                         <a href="eliminar.jsp?codlib=<%= resultado.getInt("codlib") %>">
-                            <button class="btn btn-danger">Eliminar libro</button><br><br>
+                            <button class="btn btn-danger">Eliminar libro</button>
                         </a>
                         <a href="prestar.jsp?codlib=<%= resultado.getInt("codlib") %>">
                             <button class="btn btn-warning" >Prestar libro</button>
+                        </a>
+                        <a href="devolver.jsp?codlib=<%= resultado.getInt("codlib") %>">
+                            <button class="btn btn-dark" >Devolver libro</button>
                         </a>
                     </div>
                 </div>

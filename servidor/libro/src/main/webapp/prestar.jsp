@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Préstamo de Libro</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
 </head>
 <body>
     <h2>Préstamo de libro</h2>
@@ -39,7 +40,7 @@
                 }
             %>
         </select>
-
+        <input type="number" name="nota">Nota a poner</input>
         <input type="hidden" name="codlib" id="codlib" value="<%= codLib %>">
         <br><br>
         <button type="submit">Enviar</button>
