@@ -37,7 +37,7 @@
 
                 } catch(Exception e) {
 
-                    out.print(e.getMessage());
+                    out.print("Este libro ya ha sido prestado: " + e.getMessage());
                 }
             } catch(SQLException e) {
                 out.print(e.getMessage());
