@@ -11,10 +11,9 @@
     
 
     <div class="d-flex flex-row">
-        <a class="btn btn-warning" href="nuevo.jsp">Añadir libro</a>
+        <a class="btn btn-primary" href="nuevo.jsp">Añadir libro</a>
+        <a class="btn btn-secondary" href="lectores.jsp">Lectores</a>
     </div>
-
-    
 
     <%
         try{
@@ -25,14 +24,14 @@
 
             //Creamos la consulta
             Statement stmn = con.createStatement();
-            ResultSet resultado = stmn.executeQuery("SELECT codlib, titulo, autor FROM libro");
+            ResultSet resultado = stmn.executeQuery("SELECT codlib, titulo, autor FROM LIBRO");
 
             while(resultado.next()) {
             %>
                 <div class="row mb-3">
                     <div class="col-2"><%= resultado.getString("titulo")%></div>
                     <div class="col-2"><%= resultado.getString("autor")%></div>
-                    <div class="col-5">
+                    <div class="col-7">
                         <a href="editar.jsp?codlib=<%= resultado.getInt("codlib") %>">
                             <button class="btn btn-info" >Editar libro</button>
                         </a>
@@ -44,6 +43,9 @@
                         </a>
                         <a href="devolver.jsp?codlib=<%= resultado.getInt("codlib") %>">
                             <button class="btn btn-dark" >Devolver libro</button>
+                        </a>
+                        <a href="infoLibro.jsp?codlib=<%= resultado.getInt("codlib") %>">
+                            <button class="btn btn-light" >Informacion</button>
                         </a>
                     </div>
                 </div>

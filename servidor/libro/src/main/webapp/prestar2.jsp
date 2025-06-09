@@ -16,16 +16,14 @@
 
                 int codUsu = Integer.parseInt(request.getParameter("nomUsu"));
                 int codlib = Integer.parseInt(request.getParameter("codlib"));
-                int nota = Integer.parseInt(request.getParameter("nota"));
 
-                String sql = "INSERT INTO usuario_libro (codusu, codlib, nota, fecha_inicio) VALUES (?, ?, ?, CURDATE())";
+                String sql = "INSERT INTO USUARIO_LIBRO (codlec, codlib, prestamo ) VALUES (?, ?, CURDATE())";
 
                 try {
 
                     PreparedStatement pstmt = con.prepareStatement(sql);
                     pstmt.setInt(1, codUsu);
                     pstmt.setInt(2, codlib);
-                    pstmt.setInt(3, nota);
 
                     int rows = pstmt.executeUpdate();
 

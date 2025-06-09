@@ -15,13 +15,7 @@
     %>
     <form action="editar2.jsp" method="post">
         <input type="hidden" name="codlib" id="codlib" value="<%= codlib %>"/>
-        <div class="form-group row">
-            <label for="isbn" class="col-sm-2 col-form-label"><strong>Nuevo ISBN:</strong></label>
-            <div class="col-sm-10">
-                <input id="isbn" name="isbn" type="text" class="form-control" required autofocus>
-            </div>
-        </div>
-
+        
         <div class="form-group row">
             <label for="titulo" class="col-sm-2 col-form-label"><strong>Nuevo Título:</strong></label>
             <div class="col-sm-10">
@@ -37,9 +31,16 @@
         </div>
 
         <div class="form-group row">
-            <label for="numPag" class="col-sm-2 col-form-label"><strong>N° páginas:</strong></label>
+            <label for="argumento" class="col-sm-2 col-form-label"><strong>Argumento:</strong></label>
             <div class="col-sm-10">
-                <input id="numPag" name="numPag" type="number" class="form-control">
+                <input id="argumento" name="argumento" type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="portada" class="col-sm-2 col-form-label"><strong>URL de imagen:</strong></label>
+            <div class="col-sm-10">
+                <input id="portada" name="portada" type="text" class="form-control">
             </div>
         </div>
        

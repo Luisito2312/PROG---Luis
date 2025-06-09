@@ -7,17 +7,11 @@
     <title>Gestión de libros</title>
 </head>
 <body class="p-4">
-    <h2>Gestión de libros</h2>
+    <h2>Gestion de libros</h2>
     <form action="info.jsp" method="post">
-        <div class="form-group row">
-            <label for="isbn" class="col-sm-2 col-form-label"><strong>ISBN:</strong></label>
-            <div class="col-sm-10">
-                <input id="isbn" name="isbn" type="text" class="form-control" required autofocus>
-            </div>
-        </div>
 
         <div class="form-group row">
-            <label for="titulo" class="col-sm-2 col-form-label"><strong>Título:</strong></label>
+            <label for="titulo" class="col-sm-2 col-form-label"><strong>Titulo:</strong></label>
             <div class="col-sm-10">
                 <input id="titulo" name="titulo" type="text" class="form-control">
             </div>
@@ -31,9 +25,16 @@
         </div>
 
         <div class="form-group row">
-            <label for="numPag" class="col-sm-2 col-form-label"><strong>N° páginas:</strong></label>
+            <label for="argumento" class="col-sm-2 col-form-label"><strong>Argumento:</strong></label>
             <div class="col-sm-10">
-                <input id="numPag" name="numPag" type="number" class="form-control">
+                <input id="argumento" name="argumento" type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="portada" class="col-sm-2 col-form-label"><strong>Portada:</strong></label>
+            <div class="col-sm-10">
+                <input id="portada" name="portada" type="text" class="form-control">
             </div>
         </div>
 

@@ -12,10 +12,10 @@
 
         <%
         // recuperamos la información del formulario
-        String titulo = request.getParameter("titulo");
-        String autor = request.getParameter("autor");
-        String argumento = request.getParameter("argumento");
-        String portada = request.getParameter("portada");
+        String nombre = request.getParameter("nombre");
+        String apellido = request.getParameter("apellido");
+        int edad = Integer.parseInt(request.getParameter("edad"));
+        int telefono = Integer.parseInt(request.getParameter("telefono"));
 
         try {
 
@@ -23,19 +23,19 @@
             Connection con = DriverManager.getConnection(url, "root", "password");
 
             // insertamos la información
-            String sql = "INSERT INTO LIBRO( titulo, autor, argumento, portada) VALUES (?, ?, ?, ?);";
+            String sql = "INSERT INTO LECTOR( nombre, apellido, edad, telefono) VALUES (?, ?, ?, ?);";
             
             try {
                     PreparedStatement pstmt = con.prepareStatement(sql);
-                    pstmt.setString(1, titulo);
-                    pstmt.setString(2, autor);
-                    pstmt.setString(3, argumento);
-                    pstmt.setString(4, portada);
+                    pstmt.setString(1, nombre);
+                    pstmt.setString(2, apellido);
+                    pstmt.setInt(3, edad);
+                    pstmt.setInt(4, telefono);
                     
 
                     int rows = pstmt.executeUpdate();
                     if(rows > 0) {
-                        out.print("<p>Libro añadido correctamente</p>");
+                        out.print("<p>Lector añadido correctamente</p>");
                     }
                 } catch(Exception e) {
                     out.print(e.getMessage());

@@ -16,7 +16,7 @@
             Connection con = DriverManager.getConnection(url, "root", "password");
 
             int codlib = Integer.parseInt(request.getParameter("codlib"));
-            String sql = "UPDATE usuario_libro SET fecha_fin = CURDATE() WHERE codlib = ?";
+            String sql = "UPDATE USUARIO_LIBRO SET devolucion = CURDATE() WHERE codlib = ?";
 
             try {
                 PreparedStatement pstmt = con.prepareStatement(sql);

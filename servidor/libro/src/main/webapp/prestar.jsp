@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,7 +20,7 @@
         String url = "jdbc:mysql://localhost:3306/libreria";
         con = DriverManager.getConnection(url, "root", "password");
 
-        String sql = "SELECT codusu, nombre FROM usuario";
+        String sql = "SELECT codlec, nombre FROM LECTOR WHERE bloqueado = 0";
         stmn = con.createStatement();
         resultado = stmn.executeQuery(sql);
 
@@ -32,7 +33,7 @@
             <option value="" disabled selected>-- Seleccione --</option>
             <%
                 while (resultado.next()) {
-                    int codusu = resultado.getInt("codusu");
+                    int codusu = resultado.getInt("codlec");
                     String nombre = resultado.getString("nombre");
             %>
                 <option value="<%= codusu %>"><%= nombre %></option>
@@ -40,7 +41,6 @@
                 }
             %>
         </select>
-        <input type="number" name="nota">Nota a poner</input>
         <input type="hidden" name="codlib" id="codlib" value="<%= codLib %>">
         <br><br>
         <button type="submit">Enviar</button>

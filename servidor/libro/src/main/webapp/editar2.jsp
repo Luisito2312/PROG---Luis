@@ -15,19 +15,19 @@
                 String url = "jdbc:mysql://localhost:3306/libreria";
                 Connection con = DriverManager.getConnection(url, "root" , "password");
 
-                String isbn = request.getParameter("isbn");
                 String titulo = request.getParameter("titulo");
                 String autor = request.getParameter("autor");
-                String numPag = request.getParameter("numPag");
+                String argumento = request.getParameter("argumento");
+                String portada = request.getParameter("portada");
                 int codlib = Integer.parseInt(request.getParameter("codlib"));
 
-                String sql = "UPDATE libro SET isbn = ?, titulo = ?, autor = ?, paginas = ? WHERE codlib = ?";
+                String sql = "UPDATE LIBRO SET titulo = ?, autor = ?, argumento = ?, portada = ? WHERE codlib = ?";
                 try {
                     PreparedStatement pstmt = con.prepareStatement(sql);
-                    pstmt.setString(1, isbn);
-                    pstmt.setString(2, titulo);
-                    pstmt.setString(3, autor);
-                    pstmt.setString(4, numPag);
+                    pstmt.setString(1, titulo);
+                    pstmt.setString(2, autor);
+                    pstmt.setString(3, argumento);
+                    pstmt.setString(4, portada);
                     pstmt.setInt(5, codlib);
 
                     int rows = pstmt.executeUpdate();

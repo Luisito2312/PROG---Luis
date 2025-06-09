@@ -8,25 +8,31 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
     </head>
     <body>
-        <h2>Eliminar libro</h2>
-
+        <h2>Editar libros</h2>
         <%
             try {
                 //COnectar a la base de datos
                 String url = "jdbc:mysql://localhost:3306/libreria";
                 Connection con = DriverManager.getConnection(url, "root" , "password");
 
-            
-                int codlib = Integer.parseInt(request.getParameter("codlib"));
+                String nombre = request.getParameter("nombre");
+                String apellido = request.getParameter("apellido");
+                String edad = request.getParameter("edad");
+                String telefono = request.getParameter("telefono");
+                int codlec = Integer.parseInt(request.getParameter("codlec"));
 
-                String sql = "DELETE FROM LIBRO WHERE codlib = ?";
+                String sql = "UPDATE LECTOR SET nombre = ?, apellido = ?, edad = ?, telefono = ? WHERE codlec = ?";
                 try {
                     PreparedStatement pstmt = con.prepareStatement(sql);
-                    pstmt.setInt(1, codlib);
+                    pstmt.setString(1, nombre);
+                    pstmt.setString(2, apellido);
+                    pstmt.setString(3, edad);
+                    pstmt.setString(4, telefono);
+                    pstmt.setInt(5, codlec);
 
                     int rows = pstmt.executeUpdate();
                     if(rows > 0) {
-                        out.print("<p>Libro eliminado correctamente</p>");
+                        out.print("<p>Lector actualizado correctamente</p>");
                     }
                 } catch(Exception e) {
                     out.print(e.getMessage());
@@ -37,7 +43,7 @@
                 out.print(sqle.getMessage());
             }
         %>
-        <a href="index.jsp">
+        <a href="lectores.jsp">
             <button class="btn btn-info" >Inicio</button>
         </a>
     </body>
