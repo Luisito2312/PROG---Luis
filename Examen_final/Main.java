@@ -2,6 +2,9 @@
  * EXAMEN PROGRAMACIÓN RECUPERACIÓN JUNIO
  * curso 2024|25
  */
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -17,6 +20,28 @@ public class Main {
         //
         //
         //
+
+        if (args.length < 1) {
+            System.out.println("No ha utilizado la aplicacion bien:");
+            System.out.println("java Main.java <archivo> <parametros libros>");
+            return;
+        }
+
+        if (args.length == 1) {
+            biblioteca.importarDesdeArchivo(args[0]);
+        }
+
+        if (args.length > 1) {
+            try {
+                BufferedWriter bw = new BufferedWriter(new FileWriter(args[0]));
+                for (int i = 1; i < args.length; i++) {
+                    bw.write(args[i]+";");
+                }
+                bw.close();
+            } catch (IOException e) {
+                System.out.println("ERROR: " + e.getMessage());
+            }
+        }
 
         // programa principal
 

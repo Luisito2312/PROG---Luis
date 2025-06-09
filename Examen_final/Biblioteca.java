@@ -22,7 +22,7 @@ public class Biblioteca {
 
     public void mostrarTodos() {
         for (Libro libro : libros) {
-            Libro.mostrarInformacion(libro);
+            libro.mostrarInformacion(libro);
         }
     }
 
@@ -90,14 +90,14 @@ public class Biblioteca {
         System.out.println("Hay un total de: "+sinPrestar+" libros sin prestar");
 
         for (Libro libro : librosMasAutor) {
-            Libro.mostrarInformacion(libro);
+            libro.mostrarInformacion(libro);
         }
     }
 
     public void listarPorAnio(int anio) {
         for (Libro libro : libros) {
             if (libro.getAnio() == anio) {
-                Libro.mostrarInformacion(libro);
+                libro.mostrarInformacion(libro);
             }
         }
     }
@@ -125,7 +125,13 @@ public class Biblioteca {
         try {
 
             BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
-            
+            for (Libro libro : libros) {
+                linea = libro.getTitulo() + ";"+libro.getAnio()+";"+libro.getIsbn()+";"+libro.getAutor();
+                bw.write(linea);
+                bw.newLine();
+            }
+
+            bw.close();
 
         } catch (IOException e) {
             System.out.println("ERROR: " + e.getMessage());
@@ -134,6 +140,10 @@ public class Biblioteca {
     }
 
     public void buscarPorTitulo(String titulo) {
-
+        for (Libro libro : libros) {
+            if (libro.getTitulo().equals(titulo)) {
+                libro.mostrarInformacion(libro);
+            }
+        }
     }
 }

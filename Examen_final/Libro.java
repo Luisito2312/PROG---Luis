@@ -12,7 +12,7 @@ public class Libro {
     public Libro() {
 
     }
-    
+
     public Libro(String titulo, int anio, String isbn, boolean prestado) {
         this.titulo = titulo;
         this.anio = anio;
@@ -22,7 +22,7 @@ public class Libro {
     }
 
     //Metodos
-    public static void mostrarInformacion(Libro libro) {
+    public void mostrarInformacion(Libro libro) {
         System.out.println(libro.getTitulo() + ", "+ libro.getAnio()+", "+libro.getIsbn()+", ");
         for (int i = 0; i < libro.getAutor().length; i++) {
             if (libro.getAutor()[i] != null) {
