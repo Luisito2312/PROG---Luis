@@ -8,43 +8,40 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
     </head>
     <body>
-        <h2>Gestion de libros</h2>
-
+        <h2>Editar libros</h2>
         <%
-        // recuperamos la información del formulario
-        String titulo = request.getParameter("titulo");
-        String autor = request.getParameter("autor");
-        String argumento = request.getParameter("argumento");
-        String portada = request.getParameter("portada");
-
-        try {
-
-            String url = "jdbc:mysql://localhost:3306/libreria";
-            Connection con = DriverManager.getConnection(url, "root", "password");
-
-            // insertamos la información
-            String sql = "INSERT INTO LIBRO( titulo, autor, argumento, portada) VALUES (?, ?, ?, ?);";
-            
             try {
+                //COnectar a la base de datos
+                String url = "jdbc:mysql://localhost:3306/libreria";
+                Connection con = DriverManager.getConnection(url, "root" , "password");
+
+                String titulo = request.getParameter("titulo");
+                String autor = request.getParameter("autor");
+                String argumento = request.getParameter("argumento");
+                String portada = request.getParameter("portada");
+                int codlib = Integer.parseInt(request.getParameter("codlib"));
+
+                String sql = "UPDATE LIBRO SET titulo = ?, autor = ?, argumento = ?, portada = ? WHERE codlib = ?";
+                try {
                     PreparedStatement pstmt = con.prepareStatement(sql);
                     pstmt.setString(1, titulo);
                     pstmt.setString(2, autor);
                     pstmt.setString(3, argumento);
                     pstmt.setString(4, portada);
-                    
+                    pstmt.setInt(5, codlib);
 
                     int rows = pstmt.executeUpdate();
                     if(rows > 0) {
-                        out.print("<p>Libro añadido correctamente</p>");
+                        out.print("<p>Libro actualizado correctamente</p>");
                     }
                 } catch(Exception e) {
                     out.print(e.getMessage());
                 }
+                
 
-
-        } catch(SQLException sqle) {
-            out.print(sqle.getMessage());
-        }
+            } catch(Exception sqle) {
+                out.print(sqle.getMessage());
+            }
         %>
         <a href="index.jsp">
             <button class="btn btn-info" >Inicio</button>

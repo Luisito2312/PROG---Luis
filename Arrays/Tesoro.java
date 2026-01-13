@@ -25,6 +25,7 @@ public class Tesoro {
             mapa[x][y] = 1;
             tesoros--;
             }
+            
         }
 
         // Juego de búsqueda del tesoro

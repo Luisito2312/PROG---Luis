@@ -1,4 +1,4 @@
-package Arrays.Funciones;
+package Funciones;
 
 public class Palotes {
 

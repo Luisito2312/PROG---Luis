@@ -2,7 +2,6 @@ public class FUnCiones {
 
     public static void main(String[] args) {
         
-        //Programa de budsqueda del tesoro con arrays, que tiene 3 filas y 3 columnas, que dibuja despues de cada coordenada el mapa con una x en la casilla que se ha introducido  
         int[][] mapa = new int[5][5];
         int x;
         int y;

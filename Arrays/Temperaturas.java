@@ -1,5 +1,3 @@
-package Arrays;
-
 public class Temperaturas {
     
     private static final int DIAS = 365;

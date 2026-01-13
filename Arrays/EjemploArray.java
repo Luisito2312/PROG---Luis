@@ -1,5 +1,3 @@
-package Arrays;
-
 public class EjemploArray {
     
     public static final int MAXIMO = 100;
